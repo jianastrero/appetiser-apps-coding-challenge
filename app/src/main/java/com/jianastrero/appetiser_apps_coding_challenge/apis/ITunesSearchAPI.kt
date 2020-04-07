@@ -2,16 +2,15 @@ package com.jianastrero.appetiser_apps_coding_challenge.apis
 
 import com.jianastrero.appetiser_apps_coding_challenge.models.ITunesSearch
 import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ITunesSearchAPI {
 
-    @GET(
-        "search?term={term}&amp;country={country}&amp;media={media}&amp;all"
-    )
+    @GET("search")
     suspend fun search(
-        @Path("term") term: String,
-        @Path("country") country: String,
-        @Path("media") media: String
+        @Query("term") term: String,
+        @Query("country") country: String,
+        @Query("media") media: String,
+        @Query("all") all: String
     ): ITunesSearch
 }
