@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.jianastrero.appetiser_apps_coding_challenge"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -23,6 +23,10 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -45,4 +49,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.5"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.5"
+
+    // Material UI
+    implementation 'com.google.android.material:material:1.1.0'
 }

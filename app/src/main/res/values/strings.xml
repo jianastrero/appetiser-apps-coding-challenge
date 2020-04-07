@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Appetiser Apps Coding Challenge</string>
+    <string name="search">Search</string>
+    <string name="last_visit_placeholder">Last Visit: July 24, 1995</string>
 </resources>
