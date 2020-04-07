@@ -9,7 +9,7 @@ interface ITunesSearchAPI {
     @GET(
         "search?term={term}&amp;country={country}&amp;media={media}&amp;all"
     )
-    fun search(
+    suspend fun search(
         @Path("term") term: String,
         @Path("country") country: String,
         @Path("media") media: String
