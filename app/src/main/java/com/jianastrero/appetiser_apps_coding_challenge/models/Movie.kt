@@ -1,6 +1,6 @@
 package com.jianastrero.appetiser_apps_coding_challenge.models
 
-data class Result(
+data class Movie(
     var artistId: Int,
     var artistName: String,
     var artistViewUrl: String,

@@ -1,6 +1,8 @@
 package com.jianastrero.appetiser_apps_coding_challenge.models
 
+import com.google.gson.annotations.SerializedName
+
 data class ITunesSearch(
     var resultCount: Int,
-    var results: List<Result>
+    @SerializedName("results") var movies: List<Movie>
 )
