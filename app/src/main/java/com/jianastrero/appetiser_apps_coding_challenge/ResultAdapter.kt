@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.jianastrero.appetiser_apps_coding_challenge.databinding.ItemResultBinding
-import com.jianastrero.appetiser_apps_coding_challenge.models.Result
+import com.jianastrero.appetiser_apps_coding_challenge.models.Movie
 
 class ResultAdapter(
-    val list: List<Result>
+    private val list: List<Movie>
 ) : RecyclerView.Adapter<ResultAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

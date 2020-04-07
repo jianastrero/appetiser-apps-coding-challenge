@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val adapter: ResultAdapter by lazy {
-        ResultAdapter(viewModel.list)
+        ResultAdapter(viewModel.trendingList)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,8 +52,8 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.reset()
 
-        // if (viewModel.lastVisit.get().equals("Never", true))
-        //     binding.tvLastVisit.isVisible = false
+        if (viewModel.lastVisit.get().equals("Never", true))
+            binding.tvLastVisit.isVisible = false
 
         viewModel.fetchData().invokeOnCompletion {
             updateList()
