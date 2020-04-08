@@ -23,26 +23,22 @@
         android:paddingStart="8dp"
         android:paddingEnd="8dp">
 
-        <com.google.android.material.card.MaterialCardView
+        <ImageView
+            android:id="@+id/ivImage"
             android:layout_width="match_parent"
             android:layout_height="140dp"
-            android:clipChildren="true"
+            android:background="@drawable/rounded_square"
+            android:contentDescription="@null"
             android:elevation="8dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp">
-
-            <ImageView
-                android:id="@+id/ivImage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@null"
-                android:scaleType="centerCrop" />
-
-        </com.google.android.material.card.MaterialCardView>
+            android:scaleType="centerCrop"
+            app:elevation="8dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="3"
+            android:maxLines="3"
             android:text="@{ title }"
             android:textColor="#ffffff"
             android:textSize="16sp"
@@ -52,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{ price }"
-            android:textColor="#ffffff"
+            android:textColor="@color/colorAccent"
             android:textSize="12sp"
             android:textStyle="bold" />
 

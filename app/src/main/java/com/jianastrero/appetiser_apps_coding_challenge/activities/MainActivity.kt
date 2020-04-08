@@ -31,11 +31,7 @@ class MainActivity : AppCompatActivity() {
             .get(MainViewModel::class.java)
     }
 
-    private val adapter: CategorizedMovieAdapter by lazy {
-        CategorizedMovieAdapter(
-            viewModel.categorizedMovieList
-        )
-    }
+    private val adapter = CategorizedMovieAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +62,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateList() = CoroutineScope(Dispatchers.Main).launch {
-        adapter.notifyDataSetChanged()
+        adapter.submitList(viewModel.categorizedMovieList)
 
         viewModel.featured?.let {
 
