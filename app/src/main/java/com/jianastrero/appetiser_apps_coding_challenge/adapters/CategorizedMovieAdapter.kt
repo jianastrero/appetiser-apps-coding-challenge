@@ -1,9 +1,10 @@
-package com.jianastrero.appetiser_apps_coding_challenge
+package com.jianastrero.appetiser_apps_coding_challenge.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.jianastrero.appetiser_apps_coding_challenge.R
 import com.jianastrero.appetiser_apps_coding_challenge.databinding.ItemCategorizedMoviesBinding
 import com.jianastrero.appetiser_apps_coding_challenge.models.Movie
 
