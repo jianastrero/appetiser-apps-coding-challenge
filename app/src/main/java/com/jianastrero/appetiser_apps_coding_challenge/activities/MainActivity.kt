@@ -11,7 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jianastrero.appetiser_apps_coding_challenge.R
-import com.jianastrero.appetiser_apps_coding_challenge.ResultAdapter
+import com.jianastrero.appetiser_apps_coding_challenge.CategorizedMovieAdapter
 import com.jianastrero.appetiser_apps_coding_challenge.databinding.ActivityMainBinding
 import com.jianastrero.appetiser_apps_coding_challenge.extensions.bigger
 import com.jianastrero.appetiser_apps_coding_challenge.extensions.into
@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
             .get(MainViewModel::class.java)
     }
 
-    private val adapter: ResultAdapter by lazy {
-        ResultAdapter(viewModel.trendingList)
+    private val adapter: CategorizedMovieAdapter by lazy {
+        CategorizedMovieAdapter(viewModel.categorizedMovieList)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

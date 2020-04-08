@@ -20,14 +20,12 @@ class MainViewModel(
     val lastVisit = NonNullObservableField("")
     val search = NonNullObservableField("")
 
-    val filteredGenreList = mutableListOf<Pair<String, List<Movie>>>()
-    val trendingList = mutableListOf<Movie>()
+    val categorizedMovieList = mutableListOf<Pair<String, List<Movie>>>()
     var featured: Movie? = null
 
     fun reset() {
         lastVisit.set(Settings.get(SETTINGS_LAST_VISIT, "Never"))
-        filteredGenreList.clear()
-        trendingList.clear()
+        categorizedMovieList.clear()
         featured = null
     }
 
@@ -42,6 +40,7 @@ class MainViewModel(
         val mapped =
             results
                 .distinctBy { it.primaryGenreName }
+                .sortedBy { it.primaryGenreName }
                 .map {
                     it.primaryGenreName to
                         results
@@ -52,11 +51,9 @@ class MainViewModel(
                             .sortedBy { item -> item.trackName }
                 }
 
-        trendingList.clear()
-        trendingList.addAll(results.random(10))
-
-        filteredGenreList.clear()
-        filteredGenreList.addAll(mapped)
+        categorizedMovieList.clear()
+        categorizedMovieList.add("Trending" to results.random(10).toList())
+        categorizedMovieList.addAll(mapped)
 
         featured = results.random()
     }

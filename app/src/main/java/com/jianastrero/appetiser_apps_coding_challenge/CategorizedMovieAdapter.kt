@@ -4,33 +4,32 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.jianastrero.appetiser_apps_coding_challenge.databinding.ItemResultBinding
+import com.jianastrero.appetiser_apps_coding_challenge.databinding.ItemCategorizedMoviesBinding
 import com.jianastrero.appetiser_apps_coding_challenge.models.Movie
 
-class ResultAdapter(
-    private val list: List<Movie>
-) : RecyclerView.Adapter<ResultAdapter.ViewHolder>() {
+class CategorizedMovieAdapter(
+    private val categorizeMovies: List<Pair<String, List<Movie>>>
+) : RecyclerView.Adapter<CategorizedMovieAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.item_result,
+                R.layout.item_categorized_movies,
                 parent,
                 false
             )
         )
     }
 
-    override fun getItemCount(): Int = list.size
+    override fun getItemCount(): Int = categorizeMovies.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = list[holder.adapterPosition]
+        val item = categorizeMovies[holder.adapterPosition]
 
-        holder.binding.title = item.trackName
-        holder.binding.price =
-            "${item.currency} | ${item.trackPrice} | ${item.trackRentalPrice} | ${item.trackHdPrice} | ${item.trackHdRentalPrice}"
+        holder.binding.title = item.first
     }
 
-    class ViewHolder(val binding: ItemResultBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: ItemCategorizedMoviesBinding) :
+        RecyclerView.ViewHolder(binding.root)
 }
