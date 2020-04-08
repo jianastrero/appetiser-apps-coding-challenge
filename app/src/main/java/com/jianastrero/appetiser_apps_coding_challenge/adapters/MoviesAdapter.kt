@@ -3,12 +3,13 @@ package com.jianastrero.appetiser_apps_coding_challenge.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.jianastrero.appetiser_apps_coding_challenge.R
 import com.jianastrero.appetiser_apps_coding_challenge.databinding.ItemMovieBinding
+import com.jianastrero.appetiser_apps_coding_challenge.extensions.resize
+import com.jianastrero.appetiser_apps_coding_challenge.extensions.into
 import com.jianastrero.appetiser_apps_coding_challenge.models.Movie
 import java.lang.Exception
 import java.text.DecimalFormat
@@ -46,6 +47,8 @@ class MoviesAdapter : ListAdapter<Movie, MoviesAdapter.ViewHolder>(
 
             holder.binding.price = currencyFormat.format(item.trackPrice)
             holder.binding.ivImage.clipToOutline = true
+
+            item.artworkUrl100.resize(200, "bb").into(holder.binding.ivImage)
         } catch (e: Exception) {
             e.printStackTrace()
         }

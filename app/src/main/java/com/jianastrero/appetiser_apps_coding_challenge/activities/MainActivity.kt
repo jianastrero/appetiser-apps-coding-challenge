@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.jianastrero.appetiser_apps_coding_challenge.R
 import com.jianastrero.appetiser_apps_coding_challenge.adapters.CategorizedMovieAdapter
 import com.jianastrero.appetiser_apps_coding_challenge.databinding.ActivityMainBinding
-import com.jianastrero.appetiser_apps_coding_challenge.extensions.bigger
+import com.jianastrero.appetiser_apps_coding_challenge.extensions.resize
 import com.jianastrero.appetiser_apps_coding_challenge.extensions.into
 import com.jianastrero.appetiser_apps_coding_challenge.viewmodels.MainViewModel
 import com.jianastrero.appetiser_apps_coding_challenge.viewmodels.factory.MyViewModelFactory
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
 
             val currencyFormat = DecimalFormat("${it.currency} #,##0.00")
 
-            it.artworkUrl100.bigger(800).into(binding.ivFeature)
+            it.artworkUrl100.resize(800).into(binding.ivFeature)
             binding.tvFeatureTitle.text = it.trackName
             binding.tvFeatureGenre.text =
                 "${it.primaryGenreName} \uFF65 ${it.releaseDate.split("-")[0]}"

@@ -10,7 +10,7 @@ fun String.into(view: ImageView) =
         .placeholder(R.drawable.big_cinema)
         .into(view)
 
-fun String.bigger(width: Int, height: Int) =
-    "${substring(0 until length - 13)}${width}x${height}cc.jpg"
+fun String.resize(width: Int, height: Int, type: String = "cc") =
+    "${substring(0 until length - 13)}${width}x${height}$type.jpg"
 
-fun String.bigger(size: Int) = bigger(size, size)
+fun String.resize(size: Int, type: String = "cc") = resize(size, size, type)
