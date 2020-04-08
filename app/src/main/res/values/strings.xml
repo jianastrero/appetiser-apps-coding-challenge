@@ -2,4 +2,6 @@
     <string name="app_name">Appetiser Apps Coding Challenge</string>
     <string name="search">Search</string>
     <string name="last_visit_placeholder">Last Visit: %s</string>
+    <string name="price_placeholder">PHP 100.00</string>
+    <string name="info">Info</string>
 </resources>

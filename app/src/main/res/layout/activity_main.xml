@@ -11,36 +11,136 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true"
         tools:context=".activities.MainActivity">
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@android:color/background_light"
-            app:layout_constraintBottom_toTopOf="@id/tvLastVisit"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvList"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/appBarLayout"
+            <TextView
+                android:id="@+id/tvLastVisit"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="#ffffff"
-                app:elevation="0dp">
+                android:layout_height="wrap_content"
+                android:background="@android:color/darker_gray"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="@{ @string/last_visit_placeholder(viewModel.lastVisit) }"
+                android:textColor="@android:color/background_light"
+                android:textSize="12sp" />
 
-                <com.google.android.material.appbar.CollapsingToolbarLayout
+        </LinearLayout>
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:background="@color/colorPrimary"
+            android:fitsSystemWindows="true"
+            app:elevation="0dp">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:contentScrim="@color/colorPrimary"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    app:layout_collapseMode="none">
+
+                    <ImageView
+                        android:id="@+id/ivFeature"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@null"
+                        android:fitsSystemWindows="true"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:layout_gravity="center|bottom"
+                        android:contentDescription="@null"
+                        android:src="@drawable/fade_to_black" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|bottom"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end|bottom"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/price_tag"
+                            android:elevation="8dp"
+                            android:padding="12dp"
+                            android:text="@string/price_placeholder"
+                            android:textColor="#ffffff"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvFeatureTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingStart="32dp"
+                            android:paddingEnd="32dp"
+                            android:textColor="#ffffff"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvFeatureGenre"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:paddingStart="32dp"
+                            android:paddingEnd="32dp"
+                            android:textColor="#ffffff"
+                            android:textSize="12sp" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@drawable/button"
+                            android:drawableStart="@drawable/ic_info"
+                            android:text="@string/info"
+                            android:textColor="@color/colorPrimary" />
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+                <androidx.appcompat.widget.Toolbar
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    app:layout_scrollFlags="scroll|enterAlways">
+                    android:fitsSystemWindows="false"
+                    app:layout_collapseMode="pin">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -77,26 +177,12 @@
 
                     </LinearLayout>
 
-                </com.google.android.material.appbar.CollapsingToolbarLayout>
+                </androidx.appcompat.widget.Toolbar>
 
-            </com.google.android.material.appbar.AppBarLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
-        <TextView
-            android:id="@+id/tvLastVisit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@android:color/darker_gray"
-            android:gravity="center"
-            android:padding="4dp"
-            android:text="@{ @string/last_visit_placeholder(viewModel.lastVisit) }"
-            android:textColor="@android:color/background_light"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>
