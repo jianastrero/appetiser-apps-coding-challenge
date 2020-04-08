@@ -72,7 +72,8 @@ class MainActivity : AppCompatActivity() {
 
             it.artworkUrl100.bigger(800).into(binding.ivFeature)
             binding.tvFeatureTitle.text = it.trackName
-            binding.tvFeatureGenre.text = it.primaryGenreName
+            binding.tvFeatureGenre.text =
+                "${it.primaryGenreName} \uFF65 ${it.releaseDate.split("-")[0]}"
             binding.tvPrice.text = currencyFormat.format(it.trackPrice)
         }
     }
