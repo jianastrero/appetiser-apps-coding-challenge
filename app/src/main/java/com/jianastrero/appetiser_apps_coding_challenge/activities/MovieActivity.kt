@@ -4,19 +4,22 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.jianastrero.appetiser_apps_coding_challenge.EXTRA_MOVIE
 import com.jianastrero.appetiser_apps_coding_challenge.R
+import com.jianastrero.appetiser_apps_coding_challenge.SETTINGS_LAST_MOVIE
+import com.jianastrero.appetiser_apps_coding_challenge.activities.base.BaseActivity
 import com.jianastrero.appetiser_apps_coding_challenge.databinding.ActivityMovieBinding
 import com.jianastrero.appetiser_apps_coding_challenge.extensions.into
 import com.jianastrero.appetiser_apps_coding_challenge.extensions.resize
+import com.jianastrero.appetiser_apps_coding_challenge.singletons.Settings
+import com.jianastrero.appetiser_apps_coding_challenge.singletons.toJson
 import com.jianastrero.appetiser_apps_coding_challenge.viewmodels.MovieViewModel
 import com.jianastrero.appetiser_apps_coding_challenge.viewmodels.factory.MyViewModelFactory
 
-class MovieActivity : AppCompatActivity() {
+class MovieActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMovieBinding
 
@@ -55,6 +58,11 @@ class MovieActivity : AppCompatActivity() {
             }
 
         viewModel.movie?.artworkUrl100?.resize(300)?.into(binding.ivImage)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Settings.put(SETTINGS_LAST_MOVIE, viewModel.movie.toJson())
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

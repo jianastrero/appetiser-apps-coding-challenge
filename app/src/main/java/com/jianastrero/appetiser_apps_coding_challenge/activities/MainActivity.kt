@@ -6,13 +6,13 @@ import android.os.Build
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jianastrero.appetiser_apps_coding_challenge.EXTRA_MOVIE
 import com.jianastrero.appetiser_apps_coding_challenge.R
+import com.jianastrero.appetiser_apps_coding_challenge.activities.base.BaseActivity
 import com.jianastrero.appetiser_apps_coding_challenge.adapters.CategorizedMovieAdapter
 import com.jianastrero.appetiser_apps_coding_challenge.databinding.ActivityMainBinding
 import com.jianastrero.appetiser_apps_coding_challenge.extensions.resize
@@ -24,7 +24,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.DecimalFormat
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
