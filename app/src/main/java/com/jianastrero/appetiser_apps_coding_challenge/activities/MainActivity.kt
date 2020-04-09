@@ -60,6 +60,14 @@ class MainActivity : AppCompatActivity() {
         viewModel.fetchData().invokeOnCompletion {
             updateList()
         }
+
+        binding.ivFeature.setOnClickListener {
+            viewModel.featured?.let {
+                val intent = Intent(this@MainActivity, MovieActivity::class.java)
+                intent.putExtra(EXTRA_MOVIE, it)
+                startActivity(intent)
+            }
+        }
     }
 
     override fun onResume() {
