@@ -2,8 +2,9 @@ package com.jianastrero.appetiser_apps_coding_challenge.activities
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -36,6 +37,11 @@ class MovieActivity : AppCompatActivity() {
 
         binding.viewModel = viewModel
 
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+        supportActionBar?.title = ""
+
         val previewURL = viewModel.movie?.previewUrl
         binding.ivPlay.isVisible = previewURL != null
         if (previewURL != null)
@@ -49,5 +55,14 @@ class MovieActivity : AppCompatActivity() {
             }
 
         viewModel.movie?.artworkUrl100?.resize(300)?.into(binding.ivImage)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id: Int = item.itemId
+        if (id == android.R.id.home) {
+            onBackPressed()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
