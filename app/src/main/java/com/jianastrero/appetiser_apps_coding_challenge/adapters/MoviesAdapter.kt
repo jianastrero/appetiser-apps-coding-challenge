@@ -8,10 +8,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.jianastrero.appetiser_apps_coding_challenge.R
 import com.jianastrero.appetiser_apps_coding_challenge.databinding.ItemMovieBinding
-import com.jianastrero.appetiser_apps_coding_challenge.extensions.resize
 import com.jianastrero.appetiser_apps_coding_challenge.extensions.into
+import com.jianastrero.appetiser_apps_coding_challenge.extensions.resize
 import com.jianastrero.appetiser_apps_coding_challenge.models.Movie
-import java.lang.Exception
 import java.text.DecimalFormat
 
 class MoviesAdapter : ListAdapter<Movie, MoviesAdapter.ViewHolder>(

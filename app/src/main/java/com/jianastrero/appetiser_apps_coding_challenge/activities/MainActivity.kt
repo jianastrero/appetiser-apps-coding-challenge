@@ -18,8 +18,8 @@ import com.jianastrero.appetiser_apps_coding_challenge.SETTINGS_LAST_VISIT
 import com.jianastrero.appetiser_apps_coding_challenge.activities.base.BaseActivity
 import com.jianastrero.appetiser_apps_coding_challenge.adapters.CategorizedMovieAdapter
 import com.jianastrero.appetiser_apps_coding_challenge.databinding.ActivityMainBinding
-import com.jianastrero.appetiser_apps_coding_challenge.extensions.resize
 import com.jianastrero.appetiser_apps_coding_challenge.extensions.into
+import com.jianastrero.appetiser_apps_coding_challenge.extensions.resize
 import com.jianastrero.appetiser_apps_coding_challenge.models.Movie
 import com.jianastrero.appetiser_apps_coding_challenge.singletons.Settings
 import com.jianastrero.appetiser_apps_coding_challenge.singletons.fromJson
