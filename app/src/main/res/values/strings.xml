@@ -4,4 +4,10 @@
     <string name="last_visit_placeholder">Last Visit: %s</string>
     <string name="price_placeholder">PHP 100.00</string>
     <string name="info">Info</string>
+    <string name="buy_now">Buy Now!</string>
+    <string name="buy_hd_placeholder">Buy HD %s</string>
+    <string name="buy_placeholder">Buy %s</string>
+    <string name="rent_hd_placeholder">Rent HD %s</string>
+    <string name="rent_placeholder">Rent %s</string>
+    <string name="rent_now">Rent Now!</string>
 </resources>

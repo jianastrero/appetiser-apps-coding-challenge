@@ -17,6 +17,10 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
 
     val title = NonNullObservableField("")
     val description = NonNullObservableField("")
+    val priceHd = NonNullObservableField("")
+    val priceHdRent = NonNullObservableField("")
+    val price = NonNullObservableField("")
+    val priceRent = NonNullObservableField("")
 
     private val currencyFormat = DecimalFormat("#,##0.00")
 
@@ -27,6 +31,10 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
                 currencyFormat.applyPattern("${value.currency} #,##0.00")
                 title.set(value.trackName ?: "")
                 description.set(value.longDescription ?: "")
+                priceHd.set(currencyFormat.format(value.trackHdPrice))
+                priceHdRent.set(currencyFormat.format(value.trackHdRentalPrice))
+                price.set(currencyFormat.format(value.trackPrice))
+                priceRent.set(currencyFormat.format(value.trackRentalPrice))
             }
 
             field = value
