@@ -60,8 +60,8 @@ class MovieActivity : BaseActivity() {
         viewModel.movie?.artworkUrl100?.resize(300)?.into(binding.ivImage)
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onResume() {
+        super.onResume()
         Settings.put(SETTINGS_LAST_MOVIE, viewModel.movie.toJson())
     }
 

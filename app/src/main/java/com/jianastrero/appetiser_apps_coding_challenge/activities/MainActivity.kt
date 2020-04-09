@@ -12,11 +12,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jianastrero.appetiser_apps_coding_challenge.EXTRA_MOVIE
 import com.jianastrero.appetiser_apps_coding_challenge.R
+import com.jianastrero.appetiser_apps_coding_challenge.SETTINGS_LAST_MOVIE
 import com.jianastrero.appetiser_apps_coding_challenge.activities.base.BaseActivity
 import com.jianastrero.appetiser_apps_coding_challenge.adapters.CategorizedMovieAdapter
 import com.jianastrero.appetiser_apps_coding_challenge.databinding.ActivityMainBinding
 import com.jianastrero.appetiser_apps_coding_challenge.extensions.resize
 import com.jianastrero.appetiser_apps_coding_challenge.extensions.into
+import com.jianastrero.appetiser_apps_coding_challenge.models.Movie
+import com.jianastrero.appetiser_apps_coding_challenge.singletons.Settings
+import com.jianastrero.appetiser_apps_coding_challenge.singletons.fromJson
+import com.jianastrero.appetiser_apps_coding_challenge.singletons.toJson
 import com.jianastrero.appetiser_apps_coding_challenge.viewmodels.MainViewModel
 import com.jianastrero.appetiser_apps_coding_challenge.viewmodels.factory.MyViewModelFactory
 import kotlinx.coroutines.CoroutineScope
@@ -35,9 +40,7 @@ class MainActivity : BaseActivity() {
 
     private val adapter = CategorizedMovieAdapter().apply {
         setOnItemClickedListener {
-            val intent = Intent(this@MainActivity, MovieActivity::class.java)
-            intent.putExtra(EXTRA_MOVIE, it)
-            startActivity(intent)
+            gotoMovie(it)
         }
     }
 
@@ -63,10 +66,14 @@ class MainActivity : BaseActivity() {
 
         binding.ivFeature.setOnClickListener {
             viewModel.featured?.let {
-                val intent = Intent(this@MainActivity, MovieActivity::class.java)
-                intent.putExtra(EXTRA_MOVIE, it)
-                startActivity(intent)
             }
+        }
+
+        val lastMovie = Settings.get(SETTINGS_LAST_MOVIE, null.toJson())
+
+        if (lastMovie != null.toJson()) {
+            val movie: Movie = lastMovie.fromJson()
+            gotoMovie(movie)
         }
     }
 
@@ -75,6 +82,14 @@ class MainActivity : BaseActivity() {
 
         if (viewModel.lastVisit.get().equals("Never", true))
             binding.tvLastVisit.isVisible = false
+
+        Settings.put(SETTINGS_LAST_MOVIE, null.toJson())
+    }
+
+    private fun gotoMovie(movie: Movie) {
+        val intent = Intent(this@MainActivity, MovieActivity::class.java)
+        intent.putExtra(EXTRA_MOVIE, movie)
+        startActivity(intent)
     }
 
     private fun updateList() = CoroutineScope(Dispatchers.Main).launch {
