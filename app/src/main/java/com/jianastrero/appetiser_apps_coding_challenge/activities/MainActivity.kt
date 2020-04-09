@@ -6,7 +6,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
-import androidx.core.view.isVisible
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -96,6 +96,12 @@ class MainActivity : BaseActivity() {
                     setAction("close") {
                         dismiss()
                     }
+                    setBackgroundTint(
+                        ContextCompat.getColor(
+                            this@MainActivity,
+                            R.color.colorAccent
+                        )
+                    )
                 }
             snackbar.show()
         }
