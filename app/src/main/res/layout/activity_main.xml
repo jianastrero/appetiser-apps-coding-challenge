@@ -31,17 +31,6 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
-            <TextView
-                android:id="@+id/tvLastVisit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/darker_gray"
-                android:gravity="center"
-                android:padding="4dp"
-                android:text="@{ @string/last_visit_placeholder(viewModel.lastVisit) }"
-                android:textColor="@android:color/background_light"
-                android:textSize="12sp" />
-
         </LinearLayout>
 
         <com.google.android.material.appbar.AppBarLayout

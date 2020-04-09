@@ -10,9 +10,11 @@ import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.jianastrero.appetiser_apps_coding_challenge.EXTRA_MOVIE
 import com.jianastrero.appetiser_apps_coding_challenge.R
 import com.jianastrero.appetiser_apps_coding_challenge.SETTINGS_LAST_MOVIE
+import com.jianastrero.appetiser_apps_coding_challenge.SETTINGS_LAST_VISIT
 import com.jianastrero.appetiser_apps_coding_challenge.activities.base.BaseActivity
 import com.jianastrero.appetiser_apps_coding_challenge.adapters.CategorizedMovieAdapter
 import com.jianastrero.appetiser_apps_coding_challenge.databinding.ActivityMainBinding
@@ -81,10 +83,22 @@ class MainActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
 
-        if (viewModel.lastVisit.get().equals("Never", true))
-            binding.tvLastVisit.isVisible = false
-
         Settings.put(SETTINGS_LAST_MOVIE, null.toJson())
+
+        val lastVisit = Settings.get(SETTINGS_LAST_VISIT, "Never")
+        if (lastVisit != "Never") {
+            val snackbar = Snackbar
+                .make(
+                    binding.root,
+                    "Last Visit: $lastVisit",
+                    Snackbar.LENGTH_INDEFINITE
+                ).apply {
+                    setAction("close") {
+                        dismiss()
+                    }
+                }
+            snackbar.show()
+        }
     }
 
     private fun gotoMovie(movie: Movie) {
