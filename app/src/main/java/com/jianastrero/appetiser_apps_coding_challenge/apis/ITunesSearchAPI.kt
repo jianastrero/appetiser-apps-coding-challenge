@@ -6,6 +6,7 @@ import retrofit2.http.Query
 
 interface ITunesSearchAPI {
 
+    // Search api using retrofit
     @GET("search")
     suspend fun search(
         @Query("term") term: String,

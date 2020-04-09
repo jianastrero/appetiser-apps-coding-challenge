@@ -7,6 +7,10 @@ import com.jianastrero.appetiser_apps_coding_challenge.repositories.iTunesSearch
 import com.jianastrero.appetiser_apps_coding_challenge.viewmodels.MainViewModel
 import com.jianastrero.appetiser_apps_coding_challenge.viewmodels.MovieViewModel
 
+/**
+ * View model factory for android view models. This ensures that repositories are not recreated
+ * and view models are handles by android
+ */
 object MyViewModelFactory {
 
     private lateinit var factory: ViewModelProvider.AndroidViewModelFactory

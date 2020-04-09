@@ -40,11 +40,15 @@ class MovieActivity : BaseActivity() {
 
         binding.viewModel = viewModel
 
+        // Set toolbar with back button and no title
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
         supportActionBar?.title = ""
 
+        // check if preview url is available and hide/show the play button if the preview is
+        // available or not. Also, set that when the image is clicked, show a picker to view
+        // the preview
         val previewURL = viewModel.movie?.previewUrl
         binding.ivPlay.isVisible = previewURL != null
         if (previewURL != null)
@@ -57,15 +61,21 @@ class MovieActivity : BaseActivity() {
                 startActivity(Intent.createChooser(intent, "Watch Preview using"))
             }
 
+        // resize the artwork to 300x300 then set it into the imageview
         viewModel.movie?.artworkUrl100?.resize(300)?.into(binding.ivImage)
     }
 
     override fun onResume() {
         super.onResume()
+
+        // Set the movie to last movie such that when the app restarts, it goes right into
+        // this activity with that movie
         Settings.put(SETTINGS_LAST_MOVIE, viewModel.movie.toJson())
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        // home as up button implementation - boilerplate
         val id: Int = item.itemId
         if (id == android.R.id.home) {
             onBackPressed()

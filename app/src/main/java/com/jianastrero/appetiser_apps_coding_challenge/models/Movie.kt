@@ -3,6 +3,53 @@ package com.jianastrero.appetiser_apps_coding_challenge.models
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
+/**
+ * Extracted from the JSON return of the api
+ *
+ * @property artistId
+ * @property artistName
+ * @property artistViewUrl
+ * @property artworkUrl100
+ * @property artworkUrl30
+ * @property artworkUrl60
+ * @property collectionArtistId
+ * @property collectionArtistViewUrl
+ * @property collectionCensoredName
+ * @property collectionExplicitness
+ * @property collectionHdPrice
+ * @property collectionId
+ * @property collectionName
+ * @property collectionPrice
+ * @property collectionViewUrl
+ * @property contentAdvisoryRating
+ * @property copyright
+ * @property country
+ * @property currency
+ * @property description
+ * @property discCount
+ * @property discNumber
+ * @property hasITunesExtras
+ * @property isStreamable
+ * @property kind
+ * @property longDescription
+ * @property previewUrl
+ * @property primaryGenreName
+ * @property releaseDate
+ * @property shortDescription
+ * @property trackCensoredName
+ * @property trackCount
+ * @property trackExplicitness
+ * @property trackHdPrice
+ * @property trackHdRentalPrice
+ * @property trackId
+ * @property trackName
+ * @property trackNumber
+ * @property trackPrice
+ * @property trackRentalPrice
+ * @property trackTimeMillis
+ * @property trackViewUrl
+ * @property wrapperType
+ */
 @Parcelize
 data class Movie(
     var artistId: Int,

@@ -6,4 +6,7 @@ import java.util.Locale
 
 private val readableDateTimeFormat = SimpleDateFormat("MMMM dd, yyyy hh:mm aa", Locale.US)
 
+/**
+ * Convert a date to human readable
+ */
 fun Date.toReadable() = readableDateTimeFormat.format(this)

@@ -8,6 +8,7 @@ import java.text.DecimalFormat
 
 class MovieViewModel(application: Application) : AndroidViewModel(application) {
 
+    // Fields to show on the UI
     val title = NonNullObservableField("")
     val description = NonNullObservableField("")
     val priceHd = NonNullObservableField("")
@@ -17,8 +18,10 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
     val genre = NonNullObservableField("")
     val year = NonNullObservableField("")
 
+    // Default currency format
     private val currencyFormat = DecimalFormat("#,##0.00")
 
+    // When a movie is set, automatically set the values of the fields to be shown on th eUI
     var movie: Movie? = null
         set(value) {
 

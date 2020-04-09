@@ -9,7 +9,10 @@ class MyApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
+        // Initialize settings
         Settings.init(this)
+
+        // Initialize MyViewModelFactory
         MyViewModelFactory.init(this)
     }
 }

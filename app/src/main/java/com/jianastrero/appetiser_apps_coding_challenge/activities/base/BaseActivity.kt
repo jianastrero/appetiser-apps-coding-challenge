@@ -9,6 +9,9 @@ import java.util.Date
 
 open class BaseActivity : AppCompatActivity() {
 
+    /**
+     * Save last open activity and last date of visit right when the activity is paused
+     */
     override fun onPause() {
         super.onPause()
 

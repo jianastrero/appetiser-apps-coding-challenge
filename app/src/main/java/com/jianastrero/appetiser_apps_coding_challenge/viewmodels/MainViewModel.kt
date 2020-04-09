@@ -17,20 +17,29 @@ class MainViewModel(
     private val iTunesSearchRepository: iTunesSearchRepository
 ) : AndroidViewModel(application) {
 
+    // Fields to show on the UI
     val lastVisit = NonNullObservableField("")
 
+    // Data
     val categorizedMovieList = mutableListOf<Pair<String, List<Movie>>>()
     var featured: Movie? = null
 
+    /**
+     * Reset the data
+     */
     fun reset() {
         lastVisit.set(Settings.get(SETTINGS_LAST_VISIT, "Never"))
         categorizedMovieList.clear()
         featured = null
     }
 
+    /**
+     * Fetch data from the repository
+     */
     fun fetchData() = CoroutineScope(Dispatchers.IO).launch {
         val search = iTunesSearchRepository.search()
 
+        // sort the results and turn it to a mutable list
         val results =
             search.movies
                 .sortedBy { it.trackName }
@@ -38,8 +47,8 @@ class MainViewModel(
 
         val mapped =
             results
-                .distinctBy { it.primaryGenreName }
-                .sortedBy { it.primaryGenreName }
+                .distinctBy { it.primaryGenreName } // get 1 movie per genre
+                .sortedBy { it.primaryGenreName } // sort remaining movies by genre
                 .map {
                     (it.primaryGenreName ?: "") to
                         results
@@ -48,12 +57,16 @@ class MainViewModel(
                             }
                             .toMutableList()
                             .sortedBy { item -> item.trackName }
-                }
+                } // map the genre's to a list of movies on those genre
 
+        // Clear current items on the list
         categorizedMovieList.clear()
+        // Add a "Trending" category to add a little spice to the app
         categorizedMovieList.add("Trending" to results.random(10).toList())
+        // Add all the mapped genre->movies
         categorizedMovieList.addAll(mapped)
 
+        // get a random movie as a result
         featured = results.random()
     }
 }
