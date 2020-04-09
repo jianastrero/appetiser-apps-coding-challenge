@@ -10,4 +10,5 @@
     <string name="rent_hd_placeholder">Rent HD %s</string>
     <string name="rent_placeholder">Rent %s</string>
     <string name="rent_now">Rent Now!</string>
+    <string name="genre_year_placeholder">%s \uFF65 %s</string>
 </resources>

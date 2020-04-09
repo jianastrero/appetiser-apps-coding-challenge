@@ -18,7 +18,6 @@ class MainViewModel(
 ) : AndroidViewModel(application) {
 
     val lastVisit = NonNullObservableField("")
-    val search = NonNullObservableField("")
 
     val categorizedMovieList = mutableListOf<Pair<String, List<Movie>>>()
     var featured: Movie? = null
