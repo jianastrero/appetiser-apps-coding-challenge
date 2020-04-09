@@ -66,6 +66,7 @@ class MainActivity : BaseActivity() {
 
         binding.ivFeature.setOnClickListener {
             viewModel.featured?.let {
+                gotoMovie(it)
             }
         }
 
