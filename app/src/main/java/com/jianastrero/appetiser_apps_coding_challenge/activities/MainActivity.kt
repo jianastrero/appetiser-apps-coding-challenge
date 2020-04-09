@@ -81,13 +81,6 @@ class MainActivity : BaseActivity() {
             val movie: Movie = lastMovie.fromJson()
             gotoMovie(movie)
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        // Set the last movie to null, meaning, the app wont redirect on restart
-        Settings.put(SETTINGS_LAST_MOVIE, null.toJson())
 
         // Check for last visit to either show it or not to the user
         val lastVisit = Settings.get(SETTINGS_LAST_VISIT, "Never")
@@ -110,6 +103,13 @@ class MainActivity : BaseActivity() {
                 }
             snackbar.show()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        // Set the last movie to null, meaning, the app wont redirect on restart
+        Settings.put(SETTINGS_LAST_MOVIE, null.toJson())
     }
 
     /**
