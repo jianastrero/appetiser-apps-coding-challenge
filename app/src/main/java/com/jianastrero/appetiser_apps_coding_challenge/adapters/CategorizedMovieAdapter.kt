@@ -30,6 +30,8 @@ class CategorizedMovieAdapter :
         }
     ) {
 
+    private var onItemClickedListener: (Movie) -> Unit = {}
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             DataBindingUtil.inflate(
@@ -48,9 +50,14 @@ class CategorizedMovieAdapter :
             holder.binding.title = item.first
 
             holder.adapter.submitList(item.second)
+            holder.adapter.setOnItemClickedListener(onItemClickedListener)
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+
+    fun setOnItemClickedListener(onItemClickedListener: (Movie) -> Unit) {
+        this.onItemClickedListener = onItemClickedListener
     }
 
     class ViewHolder(val binding: ItemCategorizedMoviesBinding) :

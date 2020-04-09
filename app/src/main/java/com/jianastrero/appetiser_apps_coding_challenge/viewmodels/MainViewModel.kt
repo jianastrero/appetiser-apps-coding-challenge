@@ -42,7 +42,7 @@ class MainViewModel(
                 .distinctBy { it.primaryGenreName }
                 .sortedBy { it.primaryGenreName }
                 .map {
-                    it.primaryGenreName to
+                    (it.primaryGenreName ?: "") to
                         results
                             .filter { item ->
                                 it.primaryGenreName == item.primaryGenreName

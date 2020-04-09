@@ -26,6 +26,8 @@ class MoviesAdapter : ListAdapter<Movie, MoviesAdapter.ViewHolder>(
 ) {
     val currencyFormat = DecimalFormat("#,##0.00")
 
+    private var onItemClickedListener: (Movie) -> Unit = {}
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             DataBindingUtil.inflate(
@@ -48,10 +50,18 @@ class MoviesAdapter : ListAdapter<Movie, MoviesAdapter.ViewHolder>(
             holder.binding.price = currencyFormat.format(item.trackPrice)
             holder.binding.ivImage.clipToOutline = true
 
-            item.artworkUrl100.resize(200, "bb").into(holder.binding.ivImage)
+            holder.binding.root.setOnClickListener {
+                onItemClickedListener.invoke(item)
+            }
+
+            item.artworkUrl100?.resize(200, "bb")?.into(holder.binding.ivImage)
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+
+    fun setOnItemClickedListener(onItemClickedListener: (Movie) -> Unit) {
+        this.onItemClickedListener = onItemClickedListener
     }
 
     class ViewHolder(val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root)

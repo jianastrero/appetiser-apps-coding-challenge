@@ -1,5 +1,6 @@
 package com.jianastrero.appetiser_apps_coding_challenge.activities
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -10,6 +11,7 @@ import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.jianastrero.appetiser_apps_coding_challenge.EXTRA_MOVIE
 import com.jianastrero.appetiser_apps_coding_challenge.R
 import com.jianastrero.appetiser_apps_coding_challenge.adapters.CategorizedMovieAdapter
 import com.jianastrero.appetiser_apps_coding_challenge.databinding.ActivityMainBinding
@@ -31,7 +33,13 @@ class MainActivity : AppCompatActivity() {
             .get(MainViewModel::class.java)
     }
 
-    private val adapter = CategorizedMovieAdapter()
+    private val adapter = CategorizedMovieAdapter().apply {
+        setOnItemClickedListener {
+            val intent = Intent(this@MainActivity, MovieActivity::class.java)
+            intent.putExtra(EXTRA_MOVIE, it)
+            startActivity(intent)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,10 +76,10 @@ class MainActivity : AppCompatActivity() {
 
             val currencyFormat = DecimalFormat("${it.currency} #,##0.00")
 
-            it.artworkUrl100.resize(800).into(binding.ivFeature)
+            it.artworkUrl100?.resize(800)?.into(binding.ivFeature)
             binding.tvFeatureTitle.text = it.trackName
             binding.tvFeatureGenre.text =
-                "${it.primaryGenreName} \uFF65 ${it.releaseDate.split("-")[0]}"
+                "${it.primaryGenreName} \uFF65 ${it.releaseDate?.split("-")?.get(0)}"
             binding.tvPrice.text = currencyFormat.format(it.trackPrice)
         }
     }

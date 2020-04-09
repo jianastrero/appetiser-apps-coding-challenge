@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.jianastrero.appetiser_apps_coding_challenge.repositories.iTunesSearchRepository
 import com.jianastrero.appetiser_apps_coding_challenge.viewmodels.MainViewModel
-import java.lang.RuntimeException
+import com.jianastrero.appetiser_apps_coding_challenge.viewmodels.MovieViewModel
 
 object MyViewModelFactory {
 
@@ -24,6 +24,10 @@ object MyViewModelFactory {
                             MainViewModel(
                                 application,
                                 iTunesSearchRepository
+                            )
+                        MovieViewModel::class.java ->
+                            MovieViewModel(
+                                application
                             )
                         else -> throw IllegalStateException("Unknown ViewModel: $modelClass")
                     } as T

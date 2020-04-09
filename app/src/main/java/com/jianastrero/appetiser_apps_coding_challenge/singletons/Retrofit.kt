@@ -1,5 +1,6 @@
 package com.jianastrero.appetiser_apps_coding_challenge.singletons
 
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -7,7 +8,8 @@ import com.jianastrero.appetiser_apps_coding_challenge.singletons.Retrofit as My
 
 object Retrofit {
 
-    val gson = GsonBuilder().create()
+    val gson: Gson = GsonBuilder()
+        .create()
 
     val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl("https://itunes.apple.com/")

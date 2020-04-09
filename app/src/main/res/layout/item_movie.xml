@@ -28,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:background="@drawable/rounded_square"
+            android:clickable="false"
             android:contentDescription="@null"
             android:elevation="8dp"
             android:scaleType="centerCrop"
@@ -36,6 +37,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="false"
             android:ellipsize="end"
             android:lines="2"
             android:maxLines="2"
@@ -47,6 +49,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="false"
             android:text="@{ price }"
             android:textColor="@color/colorAccent"
             android:textSize="12sp"
